@@ -1,6 +1,7 @@
 package com.academix.application.views;
 
 import com.academix.application.views.about.AboutView;
+import com.academix.application.views.dashboard.DashboardView;
 import com.academix.application.views.helloworld.HelloWorldView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -20,7 +21,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
  */
 public class MainLayout extends AppLayout {
 
-    private H2 viewTitle;
+    private H1 viewTitle;
 
     public MainLayout() {
         setPrimarySection(Section.DRAWER);
@@ -32,7 +33,7 @@ public class MainLayout extends AppLayout {
         DrawerToggle toggle = new DrawerToggle();
         toggle.setAriaLabel("Menu toggle");
 
-        viewTitle = new H2();
+        viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
         addToNavbar(true, toggle, viewTitle);
@@ -50,8 +51,9 @@ public class MainLayout extends AppLayout {
 
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
+        nav.addItem(new SideNavItem("Dashboard", DashboardView.class, LineAwesomeIcon.FILE.create()));
 
-        nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
+        nav.addItem(new SideNavItem("Hello World", HelloWorldView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
 
         return nav;
